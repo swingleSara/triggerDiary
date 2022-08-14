@@ -43,7 +43,6 @@ const {
   editIcon,
   select,
 } = require("./helpers/hbs");
-const { TopologyDescriptionChangedEvent } = require("mongodb");
 
 //Handlebars
 app.engine(
