@@ -1,7 +1,7 @@
 {
   "name": "storybooks-app",
   "version": "1.0.0",
-  "description": "App to create public and private stories",
+  "description": "App to create public and private stories, to be used in conjunction with trigger-tracker (under development)",
   "main": "server.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server",
