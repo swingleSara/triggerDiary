@@ -9,7 +9,7 @@ router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 //Description: Google auth callback
 //Route: GET /auth/google/callback
 router.get(
-  "/google/callback",
+  "https://storybooks-diary.herokuapp.com/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
   (req, res) => {
     res.redirect("/dashboard");
