@@ -10,24 +10,25 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const connectDB = require("./config/db");
 
-//Load config
+// Load config
 dotenv.config({ path: "./config/config.env" });
 
-//Passport config
+// Passport config
 require("./config/passport")(passport);
 
 connectDB();
 
 const app = express();
 
-//Body parser
+// Body parser
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-//Method override
+// Method override
 app.use(
   methodOverride(function (req, res) {
     if (req.body && typeof req.body === "object" && "_method" in req.body) {
+      // look in urlencoded POST bodies and delete it
       let method = req.body._method;
       delete req.body._method;
       return method;
@@ -35,7 +36,12 @@ app.use(
   })
 );
 
-//Handlebars helpers
+// Logging
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
+
+// Handlebars Helpers
 const {
   formatDate,
   stripTags,
@@ -55,7 +61,7 @@ app.engine(
 );
 app.set("view engine", ".hbs");
 
-//Sessions
+// Sessions
 app.use(
   session({
     secret: "keyboard cat",
@@ -65,26 +71,25 @@ app.use(
   })
 );
 
-//Passport middleware
+// Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Set global variable
+// Set global var
 app.use(function (req, res, next) {
   res.locals.user = req.user || null;
   next();
 });
 
-//Static folder
+// Static folder
 app.use(express.static(path.join(__dirname, "public")));
 
-//Routes
+// Routes
 app.use("/", require("./routes/index"));
 app.use("/auth", require("./routes/auth"));
 app.use("/stories", require("./routes/stories"));
 
-//Port
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(
   PORT,
