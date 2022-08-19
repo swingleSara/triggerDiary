@@ -1,14 +1,14 @@
 {
-  "name": "storybooks-app",
+  "name": "trigger-diary",
   "version": "1.0.0",
   "description": "App to create public and private stories, to be used in conjunction with trigger-tracker (under development)",
   "main": "server.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server",
-    "dev": "cross-env NODE_ENV=development node server"
+    "dev": "cross-env NODE_ENV=development nodemon server"
   },
   "author": "Sara Swingle",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.1",

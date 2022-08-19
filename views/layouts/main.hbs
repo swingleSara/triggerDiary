@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
         integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/style.css">
-    <title>StoryBooks</title>
+    <title>Trigger Diary</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
         M.Sidenav.init(document.querySelector('.sidenav'))
         M.FormSelect.init(document.querySelector('#status'))
         CKEDITOR.replace('body', {
-            plugins: 'wysiwygarea, toolbar, basicstyles, link'
+            plugins: 'tab, undo, wysiwygarea, toolbar, basicstyles, link, blockquote, clipboard, colorbutton, menu, find, font, format, indent, indentblock, indentlist, justify, list, liststyle, pastetext, resize, menubutton, selectall, '
         })
     </script>
 </body>

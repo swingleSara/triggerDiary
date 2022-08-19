@@ -21,7 +21,6 @@ module.exports = function (passport) {
 
         try {
           let user = await User.findOne({ googleId: profile.id });
-
           if (user) {
             done(null, user);
           } else {
@@ -38,8 +37,9 @@ module.exports = function (passport) {
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
-
   passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => done(err, user));
+    User.findById(id, (err, user) => {
+      done(err, user);
+    });
   });
 };
