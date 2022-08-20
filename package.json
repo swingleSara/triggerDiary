@@ -4,7 +4,7 @@
   "description": "App to create public and private stories, to be used in conjunction with trigger-tracker (under development)",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
+    "start": "cross-env NODE_ENV=production node server",
     "dev": "cross-env NODE_ENV=development nodemon server"
   },
   "author": "Sara Swingle",
