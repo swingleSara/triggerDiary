@@ -11,10 +11,6 @@ module.exports = function (passport) {
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: "https://trigger-diary.herokuapp.com/auth/google/callback",
       },
-      console.log(
-        process.env.GOOGLE_CLIENT_ID,
-        process.env.GOOGLE_CLIENT_SECRET
-      ),
       async (accessToken, refreshToken, profile, done) => {
         const newUser = {
           googleId: profile.id,
