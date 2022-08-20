@@ -7,8 +7,10 @@ module.exports = function (passport) {
   passport.use(
     new GoogleStrategy(
       {
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        clientID:
+          367186950295 -
+          li7okjcl0t3018vuvnsf43rrts95td0d.apps.googleusercontent.com,
+        clientSecret: GOCSPX - MV_kfy1p7gynC_fyyWSEKgBR8OL9,
         callbackURL: "https://trigger-diary.herokuapp.com/auth/google/callback",
       },
       async (accessToken, refreshToken, profile, done) => {
