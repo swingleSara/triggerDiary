@@ -9,7 +9,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const connectDB = require("./config/db");
 
-// LOAD CONFIG
+//LOAD CONFIG
 dotenv.config({ path: "./config/config.env" });
 
 //LOAD PASSPORT
@@ -23,11 +23,10 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Method override
+//METHOD OVERRIDE
 app.use(
   methodOverride(function (req, res) {
     if (req.body && typeof req.body === "object" && "_method" in req.body) {
-      // look in urlencoded POST bodies and delete it
       let method = req.body._method;
       delete req.body._method;
       return method;
@@ -49,7 +48,7 @@ const {
   select,
 } = require("./helpers/hbs");
 
-//Handlebars
+//HANDLEBARS
 app.engine(
   ".hbs",
   exphbs.engine({
@@ -66,20 +65,19 @@ app.engine(
 );
 app.set("view engine", ".hbs");
 
-// SESSIONS
+//SESSIONS
 app.use(
   session({
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
-    //!Change: MongoStore syntax has changed
     store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI,
     }),
   })
 );
 
-// PASSPORT MIDDLEWARE
+//PASSPORT MIDDLEWARE
 app.use(passport.initialize());
 app.use(passport.session());
 
