@@ -4,14 +4,14 @@ const { ensureAuth } = require("../middleware/auth");
 
 const Story = require("../models/Story");
 
-//@desc Showw add page
-//@Route GET /stories/add
+//Description: Show add page
+//Route: GET /stories/add
 router.get("/add", ensureAuth, (req, res) => {
   res.render("stories/add");
 });
 
-//@desc Process add form
-//@Route POST /stories
+//Description: Process add form
+//Route: POST /stories
 router.post("/", ensureAuth, async (req, res) => {
   try {
     req.body.user = req.user.id;
@@ -23,8 +23,8 @@ router.post("/", ensureAuth, async (req, res) => {
   }
 });
 
-//@desc Showw all public stories
-//@Route GET /stories
+//Description: Showw all public stories
+//Route: GET /stories
 router.get("/", ensureAuth, async (req, res) => {
   try {
     const stories = await Story.find({ status: "public" })
@@ -40,8 +40,8 @@ router.get("/", ensureAuth, async (req, res) => {
   }
 });
 
-//@desc Show single story
-//@Route GET /stories/:id
+//Description: Show single story
+//Route: GET /stories/:id
 router.get("/:id", ensureAuth, async (req, res) => {
   try {
     let story = await Story.findById(req.params.id).populate("user").lean();
@@ -59,8 +59,8 @@ router.get("/:id", ensureAuth, async (req, res) => {
   }
 });
 
-//@desc Show edit page
-//@Route GET /stories/edit/:id
+//Description: Show edit page
+//Route: GET /stories/edit/:id
 router.get("/edit/:id", ensureAuth, async (req, res) => {
   try {
     const story = await Story.findOne({
@@ -84,8 +84,8 @@ router.get("/edit/:id", ensureAuth, async (req, res) => {
   }
 });
 
-//@desc Update Story
-//@Route PUT /stories/:id
+//Description: Update Story
+//Route: PUT /stories/:id
 router.put("/:id", ensureAuth, async (req, res) => {
   try {
     let story = await Story.findById(req.params.id).lean();
@@ -110,8 +110,8 @@ router.put("/:id", ensureAuth, async (req, res) => {
   }
 });
 
-//@desc Delete story
-//@Route DELETE /stories/:id
+//Description: Delete story
+//Route: DELETE /stories/:id
 router.delete("/:id", ensureAuth, async (req, res) => {
   try {
     await Story.remove({ _id: req.params.id });
@@ -122,8 +122,8 @@ router.delete("/:id", ensureAuth, async (req, res) => {
   }
 });
 
-// @desc    User stories
-// @route   GET /stories/user/:userId
+//Description: User stories
+//Route: GET /stories/user/:userId
 router.get("/user/:userId", ensureAuth, async (req, res) => {
   try {
     const stories = await Story.find({
