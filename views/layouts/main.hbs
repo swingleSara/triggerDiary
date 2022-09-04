@@ -26,7 +26,13 @@
         M.Sidenav.init(document.querySelector('.sidenav'))
         M.FormSelect.init(document.querySelector('#status'))
         CKEDITOR.replace('body', {
-            plugins: 'Image, scayt, tab, undo, wysiwygarea, toolbar, basicstyles, link, blockquote, clipboard, colorbutton, menu, find, font, format, indent, indentblock, indentlist, justify, list, liststyle, pastetext, resize, menubutton, selectall, '
+            plugins: 'scayt, tab, undo, wysiwygarea, toolbar, basicstyles, link, blockquote, clipboard, colorbutton, menu, find, font, format, indent, indentblock, indentlist, justify, list, liststyle, pastetext, resize, menubutton, selectall, '
+        });
+        CKEDITOR.replace('editor', {
+            extraPlugins: "easyimage",
+            removePlugins: "image",
+            cloudServices_tokenUrl: "https://92050.cke-cs.com/token/dev/9MVkYuOl8xHAKRiD7DvQLbDD6tNGYsLwxOq3?limit=10",
+            cloudServives_uploadUrl: "https://92050.cke-cs.com/easyimage/upload/"
         })
     </script>
 </body>
